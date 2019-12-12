@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <bean id="hello" class="com.hay.springaop.HelloWorld" />
+    <bean id="demoBeforeAdvice" class="com.hay.springaop.DemoBeforeAdvice"/>
+    <bean id="demoAfterAdvice" class="com.hay.springaop.DemoAfterAdvice"/>
+    <bean id="demoThrowAdvice" class="com.hay.springaop.DemoThrowAdvice"/>
+    
+    <bean id="helloProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="hello"/>
+        
+        <property name="interceptorNames">
+            <list>
+                <value>demoBeforeAdvice</value>
+                <value>demoAfterAdvice</value>                
+                <value>demoThrowAdvice</value>
+            </list>
+        </property>
+    </bean>
+</beans>
