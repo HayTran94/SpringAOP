@@ -1,5 +1,7 @@
 package com.hay.springaop;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,6 +18,11 @@ public class Demo {
         System.out.println("\n");
         helloWorld.method2();
         System.out.println("\n");
-        helloWorld.method3();
+        try {
+            helloWorld.method3();
+        } catch (Exception ex) {
+        }
+        System.out.println("\n");
+        helloWorld.fullCase(5, 6);
     }
 }
